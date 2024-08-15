@@ -17,6 +17,10 @@ public protocol TikTokURLOpener {
 
 @objc
 extension UIApplication : TikTokURLOpener {
+    //ps: --yb 这里是xcode16 导致的无法打包问题修复 暂时容错，代tiktok解决后，请切换到官方版本
+    public func open(_ url: URL, options: [OpenExternalURLOptionsKey : Any], completionHandler completion: ((Bool) -> Void)?) {
+        open(url, options: options, completionHandler: completion)
+    }
     
     @objc
     public func isTikTokInstalled() -> Bool {
